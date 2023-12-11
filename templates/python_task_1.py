@@ -72,9 +72,11 @@ def filter_routes(df)->list:
         list: List of route names with average 'truck' values greater than 7.
     """
     # Write your logic here
-
-    return list()
-
+    average_truck = df.groupby('route')['truck'].mean()
+    selected_routes = average_truck[average_truck > 7].index.tolist()
+    selected_routes.sort()
+    
+    return selected_routes
 
 def multiply_matrix(matrix)->pd.DataFrame:
     """
