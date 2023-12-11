@@ -52,8 +52,13 @@ def get_bus_indexes(df)->list:
         list: List of indexes where 'bus' values exceed twice the mean.
     """
     # Write your logic here
-
-    return list()
+    bus_m = df['bus'].mean()
+    
+    bus_ind = df[df['bus'] > 2 * bus_m].index.tolist()
+    
+    bus_ind.sort()
+    
+    return bus_ind
 
 
 def filter_routes(df)->list:
