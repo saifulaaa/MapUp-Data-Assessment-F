@@ -89,6 +89,7 @@ def multiply_matrix(matrix)->pd.DataFrame:
         pandas.DataFrame: Modified matrix with values multiplied based on custom conditions.
     """
     # Write your logic here
+    matrix = car_matrix.applymap( if x > 20 else x * 1.25)
 
     return matrix
 
