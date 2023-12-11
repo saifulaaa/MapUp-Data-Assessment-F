@@ -31,8 +31,14 @@ def get_type_count(df)->dict:
         dict: A dictionary with car types as keys and their counts as values.
     """
     # Write your logic here
+    
 
-    return dict()
+    choices = ['low', 'medium', 'high']
+    df['car_type'] = pd.cut(df['car'], bins=[-float('inf'), 15, 25, float('inf')], labels=choices, right=False)
+    
+    type_count = df['car_type'].value_counts().to_dict()
+    type_count = dict(sorted(type_count.items()))
+    return type_count
 
 
 def get_bus_indexes(df)->list:
