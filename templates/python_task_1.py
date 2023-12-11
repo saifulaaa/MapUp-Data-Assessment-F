@@ -13,7 +13,14 @@ def generate_car_matrix(df)->pd.DataFrame:
                           where 'id_1' and 'id_2' are used as indices and columns respectively.
     """
     # Write your logic here
+    df = pd.read_csv(dataset)
 
+    matrix_df = dfpivot(index = "id_1", columns = "id_2", values = "car").fillna(0)
+
+    for i in matrix_df.columns:
+        matrix_df.at[col,col] = 0
+
+    return matrix_df
     return df
 
 
